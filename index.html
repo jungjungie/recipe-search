@@ -19,11 +19,21 @@
 
     <h2 class="text-center">What should we cook today?</h2>
     <!-- Search Form -->
-    <form class="container d-flex justify-content-center align-items-center">
-        <div class="text-center col-8">
-            <input type="text" id="search-input" aria-describedby="search-input" placeholder="Search for recipe">
+    <form class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="text-center col-8">
+                <input type="text" id="search-input" aria-describedby="search-input" placeholder="Search for recipe">
+            </div>
+            <button id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
-        <button id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <div id="health-selections">
+            <input type="checkbox" class="health-selections" name="option1" value="balanced" /> balanced
+            <input type="checkbox" class="health-selections" name="option2" value="high-protein" /> high-protein
+            <input type="checkbox" class="health-selections" name="option3" value="high-fiber" /> high-fiber
+            <input type="checkbox" class="health-selections" name="option4" value="low-fat" /> low-fat
+            <input type="checkbox" class="health-selections" name="option5" value="low-carb" /> low-carb
+            <input type="checkbox" class="health-selections" name="option6" value="low-sodium" /> low-sodium
+        </div>
     </form>
 
     <!-- jQuery -->

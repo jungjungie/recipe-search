@@ -2,8 +2,18 @@
 $('#searchBtn').on('click', function (event) {
     event.preventDefault();
 
-    // Variables
+    // HTML Variables
     let searchInput = $('#search-input').val().trim();
+    let healthSelections = $('.health-selections');
+    let healthSelectionsArr = [];
+
+    for (let i=0; i < healthSelections.length; i++) {
+        if (healthSelections[i].checked) {
+            healthSelectionsArr.push(healthSelections[i].value);
+        }
+    }
+
+    console.log(healthSelectionsArr);
 
     // Exit the function if the search input is empty
     if (searchInput === '') {
@@ -21,6 +31,17 @@ $('#searchBtn').on('click', function (event) {
         url: queryURL,
         method: 'GET'
     }).then(function (recipeData) {
-        console.log(recipeData);
+        // console.log(recipeData);
+
+        let recipe = recipeData.hits;
+        console.log(recipe);
+
+        let recipeName = recipe[i].label;
+        let image = recipe[i].image;
+        let yield = recipe[i].yield;
+        let cookTime = recipe[i].totalTime;
+        let ingredients = recipe[i].ingredients;
+        let directions = recipe[i].url
+
     })
 })
