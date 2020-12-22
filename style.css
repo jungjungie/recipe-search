@@ -58,6 +58,7 @@ h1 {
     background: none;
     color: white;
     border: none;
+    margin-top: 20px;
 }
 
 #search-input, #searchBtn:focus {
