@@ -38,10 +38,6 @@ $('#searchBtn').on('click', function (event) {
 
         // Loop through the data and create a new recipe card for each recipe
         for (let i = 0; i < recipe.length; i++) {
-            let recipeName = recipe[i].label;
-            // let image = recipe[i].image;
-            let yield = recipe[i].yield;
-            let cookTime = recipe[i].totalTime;
             let ingredientsArr = recipe[i].recipe.ingredients;
             let directions = recipe[i].url
 
@@ -58,11 +54,28 @@ $('#searchBtn').on('click', function (event) {
             instructionsDiv.attr("class", "card-body d-flex justify-content-center align-items-center p-0");
 
             // Create image for recipe
-            let recipeImage = $("<img>").attr("src", recipe[i].image);
+            let recipeImage = $("<img>").attr("src", recipe[i].recipe.image);
             recipeImage.attr("class", "card-img-top");
 
             recipeCardDiv.append(recipeImage, infoDiv, ingredientsDiv, instructionsDiv);
 
+            // Create new elements for recipe information and append to the infoDiv
+            let recipeName = $("<h5>").attr("class", "card-title").text(recipe[i].recipe.label);
+            let cookTime = $("<p>").attr("class", "card-text m-0").text("Cook Time: " + recipe[i].recipe.totalTime);
+            let cookYield = $("<p>").attr("class", "card-text").text("Yield: " + recipe[i].recipe.yield);
+            let healthOptions = $("<p>");
+            let healthOptionsIcon = $("<i>").attr("class", "fa fa-leaf health-icons");
+            healthOptions.attr("aria-hidden", "true");
+
+            healthOptions.append(healthOptionsIcon);
+
+            let healthLabels = recipe[i].recipe.healthLabels;
+
+            console.log(healthLabels);
+
+            healthOptions.append(healthLabels.join(", "));
+
+            infoDiv.append(recipeName, cookTime, cookYield, healthOptions);
 
             // Create unordered lists for ingredients and append to the ingredientsDiv
             let ingredientsTitle = $("<p>").attr("class", "card-text strong m-0").text("Ingredients:");
@@ -76,6 +89,7 @@ $('#searchBtn').on('click', function (event) {
 
             console.log()
 
+            // Append the new recipe card to the #search-results section
             $("#search-results").append(recipeCardDiv);
         }
     })

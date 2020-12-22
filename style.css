@@ -29,3 +29,7 @@
 .instructions-btns {
     border: 1px solid gray;
 }
+
+.health-icons {
+    margin-right: 5px;
+}
