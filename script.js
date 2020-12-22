@@ -1,7 +1,6 @@
 // Function to clear search bar and results
 function clearResults () {
     $("#search-results").empty();
-
     $("#search-input").val("");
 }
 
@@ -13,12 +12,29 @@ $('#searchBtn').on('click', function (event) {
     let searchInput = $('#search-input').val().trim();
     let healthSelections = $('.health-selections');
     let healthSelectionsArr = [];
+    let healthOptionsSelected = '';
 
+    // Push any selected health options to the healthSelectionsArr
     for (let i = 0; i < healthSelections.length; i++) {
         if (healthSelections[i].checked) {
             healthSelectionsArr.push(healthSelections[i].value);
         }
     }
+
+    console.log(healthSelectionsArr);
+
+    // If any health options are checked off, assign them to the healthOptionsSelected variable to be used in the queryURL
+    if (healthSelectionsArr.length >= 1) {
+        let newStr = "";
+
+        for (let i=0; i < healthSelectionsArr.length; i++) {
+            newStr = newStr + "&health=" + healthSelectionsArr[i]; 
+        }
+
+        healthOptionsSelected = newStr;
+    }
+
+    console.log(healthOptionsSelected);
 
     // Exit the function if the search input is empty
     if (searchInput === '') {
@@ -29,7 +45,7 @@ $('#searchBtn').on('click', function (event) {
 
     // API Variables
     let APIKey = '60cfc48a630f93872e74e6d14339f9ce';
-    let queryURL = 'https://api.edamam.com/search?q=' + searchInput + '&app_id=cc3b021a&app_key=' + APIKey;
+    let queryURL = 'https://api.edamam.com/search?q=' + searchInput + '&app_id=cc3b021a&app_key=' + APIKey + healthOptionsSelected;
 
     // AJAX call to retrieve recipe data
     $.ajax({
@@ -51,7 +67,7 @@ $('#searchBtn').on('click', function (event) {
             let instructionsDiv = $("<div>");
 
             // Set classes for new divs
-            recipeCardDiv.attr("class", "card col-12 col-md-5 col-lg-3");
+            recipeCardDiv.attr("class", "card col-12 col-md-5 col-lg-3 shadow-sm");
             infoDiv.attr("class", "card-body");
             instructionsDiv.attr("class", "card-body d-flex justify-content-center align-items-center p-0");
 
@@ -59,6 +75,7 @@ $('#searchBtn').on('click', function (event) {
             let recipeImage = $("<img>").attr("src", recipe[i].recipe.image);
             recipeImage.attr("class", "card-img-top");
 
+            // Append main sections to the recipe card
             recipeCardDiv.append(recipeImage, infoDiv, instructionsDiv);
 
             // Create new elements for recipe information
@@ -88,14 +105,11 @@ $('#searchBtn').on('click', function (event) {
             // Append the new recipe card to the #search-results section
             $("#search-results").append(recipeCardDiv);
 
+            // Clear search bar
             $("#search-input").val("");
         }
     })
 })
 
 // Left to do:
-// Clear search box after each search
-// Empty div when new search starts
-// Change recipe card columns to go to max of 3 cards per row
-// Edit styling for spacing within recipe cards
 // Add functionality to filters for health options
