@@ -1,3 +1,9 @@
+/* General */
+
+.strong {
+    font-weight: bold;
+}
+
 /* Search Form */
 
 #search-input {
@@ -16,4 +22,14 @@
 
 #search-input, #searchBtn:focus {
     outline: none !important;
+}
+
+/* Recipe Cards */
+
+.card {
+    /* margin: 2px; */
+}
+
+.instructions-btns {
+    border: 1px solid gray;
 }
