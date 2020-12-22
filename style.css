@@ -26,6 +26,10 @@
 
 /* Recipe Cards */
 
+.card {
+    margin: 10px 5px;
+}
+
 .instructions-btns {
     border: 1px solid gray;
 }
