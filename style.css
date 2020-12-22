@@ -1,17 +1,52 @@
 /* General */
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .strong {
     font-weight: bold;
 }
 
+/* Header */
+
+header {
+    padding: 40px 0;
+    color: #669966;
+    font-family: 'Pacifico', cursive;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+#cutlery-icon {
+    color: #ff7e30;
+    margin-right: 10px;
+}
+
+.orange {
+    color: #ff7e30;
+}
+
 /* Search Form */
 
+#searchDiv {
+    background: #669966;
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 30px;
+}
+
 #search-input {
+    background: none;
+    color: white;
     border: none;
     border-radius: 0 !important;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid white;
     text-align: center;
     padding: 5px 0;
+    margin-top: 20px;
     width: 100%;
 }
 
@@ -21,6 +56,7 @@
 
 #searchBtn {
     background: none;
+    color: white;
     border: none;
 }
 
@@ -28,10 +64,14 @@
     outline: none !important;
 }
 
+::placeholder {
+    color: #f9f9f9;
+}
+
 /* Recipe Cards */
 
 .card {
-    margin: 10px 5px;
+    margin: 20px 2px;
 }
 
 .instructions-btns {

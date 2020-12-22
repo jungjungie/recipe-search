@@ -11,34 +11,43 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;500;600&family=Pacifico&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
-    <h1>Recipe Search</h1>
-    <h2 class="text-center">What should we cook today?</h2>
+    <header class="text-center d-flex justify-content-center align-items-center">
+        <i class="fa fa-cutlery fa-3x" id="cutlery-icon" aria-hidden="true"></i>
+        <h1>Recipe <span class="orange">Search</span></h1>
+    </header>
+
     <!-- Search Form -->
-    <form class="container">
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="text-center col-8">
-                <input type="text" id="search-input" aria-describedby="search-input" placeholder="Search for recipe">
+    <div id="searchDiv">
+        <h2 class="text-center">What should we cook today?</h2>
+        <form class="container">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="text-center col-8">
+                    <input type="text" id="search-input" aria-describedby="search-input"
+                        placeholder="Search for a recipe">
+                </div>
+                <button id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
             </div>
-            <button id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </div>
-        <div id="health-selections" class="d-flex justify-content-center align-items-center flex-wrap m-3">
-            <input type="checkbox" class="health-selections" value="alcohol-free" />
-            <span class="p-1">Alcohol-Free</span> 
-            <input type="checkbox" class="health-selections" value="peanut-free" /> 
-            <span class="p-1">Peanut-Free</span>
-            <input type="checkbox" class="health-selections" value="tree-nut-free" /> 
-            <span class="p-1">Tree-Nut-Free</span>
-            <input type="checkbox" class="health-selections" value="vegan" /> 
-            <span class="p-1">Vegan</span>
-            <input type="checkbox" class="health-selections" value="vegetarian" /> 
-            <span class="p-1">Vegetarian</span>
-        </div>
-    </form>
+            <div id="health-selections" class="d-flex justify-content-center align-items-center flex-wrap m-3">
+                <input type="checkbox" class="health-selections" value="alcohol-free" />
+                <span class="p-1">Alcohol-Free</span>
+                <input type="checkbox" class="health-selections" value="peanut-free" />
+                <span class="p-1">Peanut-Free</span>
+                <input type="checkbox" class="health-selections" value="tree-nut-free" />
+                <span class="p-1">Tree-Nut-Free</span>
+                <input type="checkbox" class="health-selections" value="vegan" />
+                <span class="p-1">Vegan</span>
+                <input type="checkbox" class="health-selections" value="vegetarian" />
+                <span class="p-1">Vegetarian</span>
+            </div>
+        </form>
+    </div>
 
     <!-- Search Results (Recipe Cards) -->
     <section id="search-results" class="container d-flex flex-wrap justify-content-evenly"></section>
