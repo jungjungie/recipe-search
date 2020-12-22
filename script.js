@@ -110,6 +110,3 @@ $('#searchBtn').on('click', function (event) {
         }
     })
 })
-
-// Left to do:
-// Add functionality to filters for health options
