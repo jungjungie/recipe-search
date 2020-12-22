@@ -39,7 +39,6 @@ $('#searchBtn').on('click', function (event) {
         // Loop through the data and create a new recipe card for each recipe
         for (let i = 0; i < recipe.length; i++) {
             let ingredientsArr = recipe[i].recipe.ingredients;
-            let directions = recipe[i].url
 
             // Create new divs
             let recipeCardDiv = $("<div>");
@@ -59,22 +58,22 @@ $('#searchBtn').on('click', function (event) {
 
             recipeCardDiv.append(recipeImage, infoDiv, ingredientsDiv, instructionsDiv);
 
-            // Create new elements for recipe information and append to the infoDiv
+            // Create new elements for recipe information
             let recipeName = $("<h5>").attr("class", "card-title").text(recipe[i].recipe.label);
             let cookTime = $("<p>").attr("class", "card-text m-0").text("Cook Time: " + recipe[i].recipe.totalTime);
             let cookYield = $("<p>").attr("class", "card-text").text("Yield: " + recipe[i].recipe.yield);
             let healthOptions = $("<p>");
+
+            // Create a health-icon and append it to the healthOptions
             let healthOptionsIcon = $("<i>").attr("class", "fa fa-leaf health-icons");
             healthOptions.attr("aria-hidden", "true");
-
             healthOptions.append(healthOptionsIcon);
 
             let healthLabels = recipe[i].recipe.healthLabels;
 
-            console.log(healthLabels);
-
             healthOptions.append(healthLabels.join(", "));
 
+            // Append recipe information to the infoDiv
             infoDiv.append(recipeName, cookTime, cookYield, healthOptions);
 
             // Create unordered lists for ingredients and append to the ingredientsDiv
@@ -87,10 +86,21 @@ $('#searchBtn').on('click', function (event) {
 
             ingredientsDiv.append(ingredientsTitle, ingredientsUL);
 
-            console.log()
+            // Create new button linking to cooking instructions and append it to the instructionsDiv
+            let instructionsBtn = $("<a>").attr("href", recipe[i].recipe.url).text("Instructions");
+            instructionsBtn.attr("class", "btn instructions-btns mb-5");
+            instructionsBtn.attr("target", "_blank");
+            instructionsDiv.append(instructionsBtn);
 
             // Append the new recipe card to the #search-results section
             $("#search-results").append(recipeCardDiv);
         }
     })
 })
+
+// Left to do:
+// Clear search box after each search
+// Empty div when new search starts
+// Change recipe card columns to go to max of 3 cards per row
+// Edit styling for spacing within recipe cards
+// Add functionality to filters for health options
